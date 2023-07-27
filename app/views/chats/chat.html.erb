@@ -1,0 +1,13 @@
+<%= form_with url: "chat" , method: :get do |f| %>
+    <%= f.text_field :input %>
+    <%= f.submit %>
+<% end %>
+
+<% if @output %>
+  <div>
+    <%= "user : " + @input %>
+  </div>
+  <div>
+    <%= "system : " + @output %>
+  </div>
+<% end %>

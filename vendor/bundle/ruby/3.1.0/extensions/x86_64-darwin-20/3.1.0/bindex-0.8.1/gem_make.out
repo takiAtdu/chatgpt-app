@@ -1,0 +1,15 @@
+current directory: /Users/takigawaatsushi/Documents/MENTA/takase/chatgpt-app/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+/Users/takigawaatsushi/.rvm/rubies/ruby-3.1.2/bin/ruby -I /Users/takigawaatsushi/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20230727-40996-n2mu4j.rb extconf.rb
+creating Makefile
+
+current directory: /Users/takigawaatsushi/Documents/MENTA/takase/chatgpt-app/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= clean
+
+current directory: /Users/takigawaatsushi/Documents/MENTA/takase/chatgpt-app/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\=
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/takigawaatsushi/Documents/MENTA/takase/chatgpt-app/vendor/bundle/ruby/3.1.0/gems/bindex-0.8.1/ext/skiptrace
+make DESTDIR\= install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20230727-40996-z9hkas/skiptrace/internal

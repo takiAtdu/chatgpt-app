@@ -1,0 +1,15 @@
+current directory: /Users/takigawaatsushi/Documents/MENTA/takase/chatgpt-app/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/ext/bootsnap
+/Users/takigawaatsushi/.rvm/rubies/ruby-3.1.2/bin/ruby -I /Users/takigawaatsushi/.rvm/rubies/ruby-3.1.2/lib/ruby/3.1.0 -r ./siteconf20230727-40996-avrvxh.rb extconf.rb
+creating Makefile
+
+current directory: /Users/takigawaatsushi/Documents/MENTA/takase/chatgpt-app/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= clean
+
+current directory: /Users/takigawaatsushi/Documents/MENTA/takase/chatgpt-app/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\=
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/takigawaatsushi/Documents/MENTA/takase/chatgpt-app/vendor/bundle/ruby/3.1.0/gems/bootsnap-1.16.0/ext/bootsnap
+make DESTDIR\= install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20230727-40996-h0i3tm/bootsnap
