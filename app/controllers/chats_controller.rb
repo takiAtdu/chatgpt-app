@@ -49,4 +49,24 @@ class ChatsController < ApplicationController
       @output = response.dig("choices", 0, "message", "content")
     end
   end
+
+  def form
+    @chat = Chat.new
+  end
+
+  def form_submitted
+    @chat = Chat.new(chat_params)
+    if @chat.save
+      redirect_to action: :form
+    end
+  end
+
+  def show
+    @chat = Chat.find(params[:id])
+  end
+
+  private
+    def chat_params
+      params.require(:chat).permit(:mp3_file)
+    end
 end
