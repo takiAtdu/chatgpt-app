@@ -1,4 +1,14 @@
-<%= @chat.transcibed_text %>
+<div>
+  <%= @chat.mp3_file.key %>
+</div>
+
+<div>
+  <%= @chat.transcibed_text %>
+</div>
+
+<div>
+  <%= audio_tag url_for(@chat.mp3_file), controls: true %>
+</div>
 
 <div>
   <%= link_to "フォームへ", "/chats/form" %>

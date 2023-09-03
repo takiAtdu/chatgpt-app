@@ -20,6 +20,8 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
+    # text = transcribe(@chat)
+    # @chat.update(transcibed_text: text)
   end
 
   def chat
@@ -46,14 +48,17 @@ class ChatsController < ApplicationController
     end
 
     def create_tempfile(chat)
-      tempfile = Tempfile.open("temp")
-      tempfile.write(chat.mp3_file)
+      s3_client = Aws::S3::Client.new(region: "ap-northeast-1", access_key_id: "AKIAZYPIJ6N5ZG7WZPUL", secret_access_key: "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")
+      file = s3_client.get_object(bucket: "chatgpt-app-storage", key: chat.mp3_file.key).body.read
+      
+      tempfile = Tempfile.open(["temp", ".mp3"])
+      tempfile.binmode
+      tempfile.write(file)
       tempfile.rewind
 
       return tempfile
     end
 
-    # 音声ファイルを文字起こしし、データを返却
     def transcribe(chat)
       tempfile = create_tempfile(chat)
 
