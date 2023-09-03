@@ -9,7 +9,6 @@ class ChatsController < ApplicationController
     # if accepted_format.include?(@chat.mp3_file)
       if @chat.save
         text = transcribe(@chat)
-        # @chat.update(transcibed_text: "hello")
         @chat.update(transcibed_text: text)
         redirect_to action: :show, id: @chat.id
       end
@@ -20,8 +19,6 @@ class ChatsController < ApplicationController
 
   def show
     @chat = Chat.find(params[:id])
-    # text = transcribe(@chat)
-    # @chat.update(transcibed_text: text)
   end
 
   def chat
