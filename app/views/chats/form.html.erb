@@ -1,4 +1,5 @@
 <%= form_with(model: @chat, url: "form_submitted", local: true) do |f| %>
-    <%= f.file_field(:mp3_file, accept: 'audio/mp3') %>
+    <%= f.file_field(:mp3_file) %>
+    <%# <%= f.file_field(:mp3_file, accept: 'audio/mp3') %> %>
     <%= f.submit %>
 <% end %>
