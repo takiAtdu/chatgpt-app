@@ -48,7 +48,7 @@ class ChatsController < ApplicationController
     end
 
     def create_tempfile(chat)
-      s3_client = Aws::S3::Client.new(region: "ap-northeast-1", access_key_id: "AKIAZYPIJ6N5ZG7WZPUL", secret_access_key: "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")
+      s3_client = Aws::S3::Client.new(region: "ap-northeast-1", access_key_id: ENV["ACCESS_KEY_ID"], secret_access_key: ENV["SECRET_ACCESS_KEY"])
       file = s3_client.get_object(bucket: "chatgpt-app-storage", key: chat.mp3_file.key).body.read
       
       tempfile = Tempfile.open(["temp", ".mp3"])
