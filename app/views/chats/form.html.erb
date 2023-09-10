@@ -1,4 +1,8 @@
+<div>
+  音声ファイルをアップロードしてください。
+</div>
+
 <%= form_with(model: @chat, url: "form_submitted", local: true) do |f| %>
-    <%= f.file_field(:mp3_file, accept: 'audio/aac, audio/mp4, audio/mpeg, audio/ogg, audio/wav, audio/webm') %>
-    <%= f.submit %>
+  <%= f.file_field(:mp3_file, accept: 'audio/aac, audio/mp4, audio/mpeg, audio/ogg, audio/wav, audio/webm') %>
+  <%= f.submit %>
 <% end %>
