@@ -6,15 +6,20 @@ class ChatsController < ApplicationController
   def form_submitted
     @chat = Chat.new(chat_params)
     accepted_format = [".mp3"]
-    # if accepted_format.include?(@chat.mp3_file)
+    filename = @chat.mp3_file.filename
+    if accepted_format.any? { |t| filename.include?(t) }
       if @chat.save
         text = transcribe(@chat)
         @chat.update(transcibed_text: text)
         redirect_to action: :show, id: @chat.id
+      else
+        puts "保存失敗"
+        redirect_to action: :form
       end
-    # else
-    #   redirect_to action: :form
-    # end
+    else
+      puts "拡張子不適"
+      redirect_to action: :form
+    end
   end
 
   def show
