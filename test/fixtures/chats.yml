@@ -2,10 +2,10 @@
 
 one:
   path_to_audio_file: MyString
-  transcibed_text: MyString
+  transcribed_text: MyString
   summarized_text: MyString
 
 two:
   path_to_audio_file: MyString
-  transcibed_text: MyString
+  transcribed_text: MyString
   summarized_text: MyString

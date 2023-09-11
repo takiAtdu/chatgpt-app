@@ -11,7 +11,7 @@ class ChatsController < ApplicationController
       if @chat.save
         transcribed_text = transcribe(@chat)
         summarized_text = summarize(transcribed_text)
-        @chat.update(transcibed_text: transcribed_text, summarized_text: summarized_text)
+        @chat.update(transcribed_text: transcribed_text, summarized_text: summarized_text)
         redirect_to action: :show, id: @chat.id
       else
         puts "保存失敗"
@@ -30,7 +30,7 @@ class ChatsController < ApplicationController
 
   private
     def chat_params
-      params.require(:chat).permit(:id, :mp3_file, :transcibed_text, :summarized_text)
+      params.require(:chat).permit(:id, :mp3_file, :transcribed_text, :summarized_text)
     end
 
     def create_tempfile(chat)
