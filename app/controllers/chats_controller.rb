@@ -9,8 +9,9 @@ class ChatsController < ApplicationController
     filename = @chat.mp3_file.filename
     if accepted_format.any? { |t| filename.include?(t) }
       if @chat.save
-        text = transcribe(@chat)
-        @chat.update(transcibed_text: text)
+        transcribed_text = transcribe(@chat)
+        summarized_text = summarize(transcribed_text)
+        @chat.update(transcibed_text: transcribed_text, summarized_text: summarized_text)
         redirect_to action: :show, id: @chat.id
       else
         puts "保存失敗"
@@ -26,23 +27,6 @@ class ChatsController < ApplicationController
     @chat = Chat.find(params[:id])
   end
 
-  def chat
-    if params[:input]
-      @input = params[:input]
-
-      client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
-      response = client.chat(
-        parameters: {
-          model: "gpt-3.5-turbo",
-          messages: [
-            { role: "user", content: @input }
-          ],
-        },
-      )
-
-      @output = response.dig("choices", 0, "message", "content")
-    end
-  end
 
   private
     def chat_params
@@ -72,5 +56,25 @@ class ChatsController < ApplicationController
       })
 
       return response
+    end
+
+    def summarize(transcribed_text)
+      prompt = """
+        次のテキストを要約してください。
+
+        【テキスト】
+      """+transcribed_text
+
+      client = OpenAI::Client.new(access_token: ENV["OPENAI_API_KEY"])
+      response = client.chat(
+        parameters: {
+          model: "gpt-3.5-turbo",
+          messages: [
+            { role: "user", content: prompt }
+          ],
+        },
+      )
+
+      @output = response.dig("choices", 0, "message", "content")
     end
 end
