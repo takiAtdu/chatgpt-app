@@ -75,6 +75,6 @@ class ChatsController < ApplicationController
         },
       )
 
-      @output = response.dig("choices", 0, "message", "content")
+      return response.dig("choices", 0, "message", "content")
     end
 end
