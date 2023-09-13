@@ -74,3 +74,4 @@ end
 gem "ruby-openai"
 gem "dotenv-rails"
 gem "aws-sdk-s3"
+gem "streamio-ffmpeg"
