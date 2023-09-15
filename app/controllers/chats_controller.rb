@@ -9,8 +9,8 @@ class ChatsController < ApplicationController
     filename = @chat.mp3_file.filename
     # if accepted_format.any? { |t| filename.include?(t) }
       if @chat.save
-        s3_client = Aws::S3::Client.new(region: "ap-northeast-1", access_key_id: ENV["ACCESS_KEY_ID"], secret_access_key: ENV["SECRET_ACCESS_KEY"])
-        file = s3_client.get_object(bucket: "chatgpt-app-storage", key: @chat.mp3_file.key).body.read
+        s3_client = Aws::S3::Client.new(region: ENV["REGION"], access_key_id: ENV["ACCESS_KEY_ID"], secret_access_key: ENV["SECRET_ACCESS_KEY"])
+        file = s3_client.get_object(bucket: ENV["BUCKET"], key: @chat.mp3_file.key).body.read
         tempfile = create_tempfile(file)
         tempfile_list = split_mp3(tempfile)
 
