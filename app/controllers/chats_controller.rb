@@ -41,6 +41,6 @@ class ChatsController < ApplicationController
 
   private
     def chat_params
-      params.require(:chat).permit(:id, :mp3_file, :transcribed_text, :summarized_text)
+      params.require(:chat).permit(:id, :mp3_file, :image_file, :transcribed_text, :summarized_text)
     end
 end
